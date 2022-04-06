@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clima</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+
+<body class="m-6">
+    <div class="field has-addons">
+        <img src="https://img.icons8.com/wired/32/000000/apple-weather.png" />
+        <h1 class="title pt-0 has-text-primary">Clima API</h1>
+    </div>
+    <div>
+        <form method="post">{% csrf_token %}
+            <div class="field has-addons">
+                <div class="control has-icons-left">
+                    <input type="text" name="city" placeholder="Escoge tu ciudad" class="input">
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-city"></i>
+                    </span>
+                </div>
+                <div class="control">
+                    <button type="submit" class="button is-primary">Buscar</button>
+                </div>
+            </div>
+            <label class="has-text-danger">{{err}}</label>
+        </form>
+    </div>
+    <div class="card">
+        <div class="card-content">
+            <div class="media">
+                <div class="media-left">
+                    <figure class="image is-64x64">
+                        <img src="http://openweathermap.org/img/w/{{icon}}.png" alt="Imagen">
+                    </figure>
+                </div>
+                <div class="media-content">
+                    <p class="title " style="font-size:5vw;"><span>{{temp}} ºC</span></p>
+                    <p style="font-size:2vw;"><span>Sensación </span>{{feels}} ºC</p>
+                    <p>{{description}}</p>
+                </div>
+                <div>
+                    <p class="title is-4 has-text-primary-dark has-text-righ" style="font-size:5vw;">{{name}}</p>
+                    <p class="subtitle is-6 has-text-right" style="font-size:2vw;">[ {{coordinate}} ]</p>
+                    <p class="has-text-right">{{day}}</p>
+                </div>
+            </div>
+            <div>
+                <hr>
+                <p><span class="has-text-primary">Nubosidad: </span> {{cloud}} % </p>
+                <p><span class="has-text-success">Presión atmosferica: </span>{{pressure}} hPa</p>
+                <p><span class="has-text-primary">Humedad: </span>{{humidity}} %</p>
+                <p><span class="has-text-success">Velocidad viento: </span> {{ws}} m/s</p>
+                <p><span class="has-text-primary">Dirección viento: </span> {{wd}} m/s</p>
+                <p><span class="has-text-success">Rafaga viento: </span> {{wg}} m/s</p>
+
+            </div>
+        </div>
+    </div>
+</body>
+<footer class="footer">
+    <div class="content has-text-centered">
+        Creado por <a href="https://github.com/fasol8">Fabricio Solis </a>con la <a href="https://openweathermap.org">Api de OpenWeathermap</a>
+        <a target="_blank" href="https://icons8.com/icon/EPaH9OqvuR8a/weather">Weather icon by Icons8</a>
+    </div>
+
+</footer>
+
+</html>
